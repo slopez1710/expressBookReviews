@@ -6,7 +6,7 @@ let users = require("./auth_users.js").users;
 
 const public_users = express.Router();
 
-//Register a new user //
+/* Register a new user */
 public_users.post("/register", (req, res) => {
   const { username, password } = req.body;
 
@@ -22,7 +22,7 @@ public_users.post("/register", (req, res) => {
   return res.status(201).json({ message: "User registered successfully" });
 });
 
-//Get all books (Axios Promise)//
+/* Get all books (Axios + async/await) */
 public_users.get('/', async (req, res) => {
   try {
     const response = await axios.get("http://localhost:3000/");
@@ -32,7 +32,7 @@ public_users.get('/', async (req, res) => {
   }
 });
 
-//Get book details by ISBN 
+/* Get book details by ISBN (Axios + async/await) */
 public_users.get('/isbn/:isbn', async (req, res) => {
   const { isbn } = req.params;
 
@@ -44,7 +44,7 @@ public_users.get('/isbn/:isbn', async (req, res) => {
   }
 });
 
-// Get books by author
+/* Get books by author (Axios + async/await) */
 public_users.get('/author/:author', async (req, res) => {
   const { author } = req.params;
 
@@ -56,7 +56,7 @@ public_users.get('/author/:author', async (req, res) => {
   }
 });
 
-// Get books by title 
+/* Get books by title (Axios + async/await) */
 public_users.get('/title/:title', async (req, res) => {
   const { title } = req.params;
 
@@ -68,7 +68,7 @@ public_users.get('/title/:title', async (req, res) => {
   }
 });
 
-//Get book review
+/* Get book review (Axios + async/await) */
 public_users.get('/review/:isbn', async (req, res) => {
   const { isbn } = req.params;
 
